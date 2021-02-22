@@ -8,13 +8,17 @@ package _设计模式._单例模式;
  */
 public class Test {
     public static void main(String[] args) {
-        //饿汉模式
-        SingletonHungry s1= SingletonHungry.instance;
-        SingletonHungry s2= SingletonHungry.getInstance();
+        //静态内部类实现
+        SingletonStaticInnerClass s1= SingletonStaticInnerClass.getUniqueInstance();
+        SingletonStaticInnerClass s2= SingletonStaticInnerClass.getUniqueInstance();
         System.out.println(s1==s2);
-        //懒汉模式
-        SingletonLazy s3= SingletonLazy.getInstance();
-        SingletonLazy s4= SingletonLazy.getInstance();
+        //双重校验锁
+        SingletonDoubleVerifyLock s3= SingletonDoubleVerifyLock.getUniqueInstance();
+        SingletonDoubleVerifyLock s4= SingletonDoubleVerifyLock.getUniqueInstance();
         System.out.println(s3==s4);
+        //懒汉式-线程安全
+        SingletonLazy2 s5=SingletonLazy2.getUniqueInstance();
+        SingletonLazy2 s6=SingletonLazy2.getUniqueInstance();
+        System.out.println(s5==s6);
     }
 }

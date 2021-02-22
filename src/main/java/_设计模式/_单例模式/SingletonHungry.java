@@ -4,7 +4,7 @@ package _设计模式._单例模式;
  * @ClassName: Singleton
  * @Author: lerry_li
  * @CreateTime: 2021/02/22
- * @Description 单例模式之饿汉模式
+ * @Description 单例模式之饿汉式-线程安全
  */
 public class SingletonHungry {
     //1.私有化构造方法，不允许外部直接创建对象

@@ -4,7 +4,7 @@ package _设计模式._单例模式;
  * @ClassName: Singleton2
  * @Author: lerry_li
  * @CreateTime: 2021/02/22
- * @Description 单例模式之懒汉模式-线程不安全
+ * @Description 单例模式之懒汉式-线程不安全
  */
 public class SingletonLazy {
     //1.私有化构造方法
