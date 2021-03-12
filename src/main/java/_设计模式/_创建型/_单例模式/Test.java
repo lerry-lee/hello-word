@@ -1,7 +1,7 @@
 package _设计模式._创建型._单例模式;
 
 /**
- * @ClassName: Test
+ * @ClassName: _数据结构与算法._BFS.Test
  * @Author: lerry_li
  * @CreateTime: 2021/02/22
  * @Description
