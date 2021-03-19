@@ -44,7 +44,7 @@ public class _多线程累加 {
             res += future.get();
             System.out.println(res);
         }
-        System.out.println(res);
+//        System.out.println(res);
     }
 
     class SumTask implements Callable<Long> {

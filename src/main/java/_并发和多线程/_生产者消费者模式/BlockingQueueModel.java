@@ -108,7 +108,7 @@ public class BlockingQueueModel {
             T t = queue.take();
             System.out.println("正在消费：" + t.toString());
             //睡眠1s
-            Thread.sleep(1);
+            Thread.sleep(1000);
         }
     }
 }
