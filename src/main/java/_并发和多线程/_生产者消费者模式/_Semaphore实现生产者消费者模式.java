@@ -1,4 +1,4 @@
-package _并发和多线程._AQS;
+package _并发和多线程._生产者消费者模式;
 
 import java.util.LinkedList;
 import java.util.concurrent.Semaphore;

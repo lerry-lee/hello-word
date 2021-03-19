@@ -1,7 +1,4 @@
-import java.util.PriorityQueue;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 /**
  * @ClassName: main
@@ -15,4 +12,7 @@ public class main {
         int a=3;
         LinkedBlockingQueue<Integer> queue;
     }
+
+
+
 }
