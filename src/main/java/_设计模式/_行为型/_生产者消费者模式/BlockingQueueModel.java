@@ -1,4 +1,4 @@
-package _并发和多线程._生产者消费者模式;
+package _设计模式._行为型._生产者消费者模式;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

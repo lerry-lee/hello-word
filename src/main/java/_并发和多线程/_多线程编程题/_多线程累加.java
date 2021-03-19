@@ -1,4 +1,4 @@
-package _并发和多线程;
+package _并发和多线程._多线程编程题;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class _多线程累加 {
         //关闭线程池
         threadPoolExecutor.shutdown();
         //统计结果
-        long res = 0l;
+        long res = 0L;
         for (Future<Long> future : futureList) {
             res += future.get();
             System.out.println(res);
