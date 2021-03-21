@@ -27,15 +27,23 @@ public class _322零钱兑换 {
         //初始dp[0]=0，当总金额为0时，需要0枚硬币可以凑齐
         dp[0]=0;
 
-        //遍历所有金额，从1到amount
-        for (int i = 1; i <= amount; i++) {
-            //遍历所有硬币取值，当coin<=i时，可转移
-            for (int coin : coins) {
-                if (coin <= i) {
-                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
-                }
+//        //遍历所有金额，从1到amount
+//        for (int i = 1; i <= amount; i++) {
+//            //遍历所有硬币取值，当coin<=i时，可转移
+//            for (int coin : coins) {
+//                if (coin <= i) {
+//                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+//                }
+//            }
+//        }
+        //枚举硬币
+        for(int coin:coins){
+            //枚举金额
+            for (int i = coin; i <= amount; i++) {
+                dp[i] = Math.min(dp[i], dp[i - coin] + 1);
             }
         }
+
         //最终判断是否需要返回-1
         if (dp[amount] == amount + 1) {
             return -1;
