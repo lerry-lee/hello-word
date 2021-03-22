@@ -10,7 +10,7 @@ import java.util.concurrent.*;
  * @CreateTime: 2021/03/19
  * @Description 使用线程池和Future类实现多线程对同一个数组累加问题
  */
-public class _多线程累加 {
+public class _大数组求和 {
     //线程池
     private ThreadPoolExecutor threadPoolExecutor;
     //Future类
@@ -71,7 +71,7 @@ public class _多线程累加 {
     }
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        _多线程累加 instance = new _多线程累加();
+        _大数组求和 instance = new _大数组求和();
         instance.doSum();
     }
 }

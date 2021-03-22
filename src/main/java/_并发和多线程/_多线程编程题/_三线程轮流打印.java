@@ -35,7 +35,7 @@ import java.util.concurrent.locks.ReentrantLock;
  线程3：35
  线程3：36
  */
-public class practice2 {
+public class _三线程轮流打印 {
     static int number = 1;
 
     public static void main(String[] args) {
