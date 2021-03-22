@@ -7,7 +7,6 @@ package _并发和多线程._多线程编程题;
  * @Description
  */
 
-import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -37,20 +36,20 @@ import java.util.concurrent.locks.ReentrantLock;
  线程3：36
  */
 public class practice2 {
-    static int number = 0;
-
+    static int number = 1;
 
     public static void main(String[] args) {
-//        CyclicBarrier cyclicBarrier=new CyclicBarrier(3);
         ReentrantLock lock = new ReentrantLock();
-        Condition canT1do=lock.newCondition(),canT2do=lock.newCondition(),canT3do= lock.newCondition();
-        Thread t1 = new Thread(new task(lock,1,canT1do,canT2do));
-        Thread t2 = new Thread(new task(lock,2,canT2do,canT3do));
-        Thread t3 = new Thread(new task(lock,3,canT3do,canT1do));
+        Condition canT1do = lock.newCondition(), canT2do = lock.newCondition(), canT3do = lock.newCondition();
+        Thread t1 = new Thread(new task(lock, 1, canT1do, canT2do));
+        Thread t2 = new Thread(new task(lock, 2, canT2do, canT3do));
+        Thread t3 = new Thread(new task(lock, 3, canT3do, canT1do));
         t1.start();
         t2.start();
         t3.start();
+
     }
+
 
     static class task implements Runnable {
 
@@ -58,7 +57,7 @@ public class practice2 {
         private int id;
         private Condition canIDo;
         private Condition canNextDo;
-        private int end=36;
+        private int end = 36;
 
         public task(ReentrantLock lock, int id, Condition canIDo, Condition canNextDo) {
             this.lock = lock;
@@ -69,27 +68,25 @@ public class practice2 {
 
         @Override
         public void run() {
-
-            while(number<=end){
+            while (number <= end) {
                 lock.lock();
-                try{
-                    int no=number%9;
-                    if(no>=id&&no<=id+2){
-                        for (int i = 0; i < 2; i++) {
+                try {
+                    int no = number % 9;
+                    if ((no == 1 || no == 2 || no == 3) && id == 1 || ((no == 4 || no == 5 || no == 6) && id == 2) || ((no == 7 || no == 8 || no == 0) && id == 3)) {
+                        for (int i = 0; i < 3; i++) {
+                            System.out.println("线程" + id + ": " + number);
                             number++;
-                            System.out.println("线程"+id+": "+number);
                         }
                         canNextDo.signal();
-                    }else {
+                    } else {
                         canIDo.await();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }finally {
+                } finally {
                     lock.unlock();
                 }
             }
-
         }
     }
 }
