@@ -1,4 +1,5 @@
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @ClassName: main
@@ -9,10 +10,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class main {
 
     public static void main(String[] args) {
-        int a=3;
-        LinkedBlockingQueue<Integer> queue;
+
     }
-
-
 
 }
