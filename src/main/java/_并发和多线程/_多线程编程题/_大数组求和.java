@@ -55,9 +55,13 @@ public class _大数组求和 {
         System.out.println("sum: " + res);
     }
 
+    //执行任务的具体类
     class SumTask implements Callable<Long> {
+        //求和的数组
         int[] nums;
+        //起始下标
         int start;
+        //终止下标
         int end;
 
         public SumTask(int[] nums, int start, int end) {
