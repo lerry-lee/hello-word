@@ -5,29 +5,35 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * @ClassName: _多线程累加
- * @Author: lerry_li
- * @CreateTime: 2021/03/19
- * @Description 使用线程池和Future类实现多线程对同一个数组累加问题
+ * 使用线程池和Future类实现多线程对同一个数组累加求和
+ * 例如：长度为1000000的数组，简单起见，假设全为1，[1,1,1,...,1],使用多线程对其累加求和
  */
 public class _大数组求和 {
-    //线程池，用于管理线程
-    private ThreadPoolExecutor threadPoolExecutor;
-    //Future类，用于接受线程返回值
-    private List<Future<Long>> futureList;
 
-    public void doSum() throws ExecutionException, InterruptedException {
-        //5个线程的线程池
-        threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
-        //Future类的list
-        futureList = new ArrayList<>();
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        _大数组求和 instance = new _大数组求和();
         //--------------模拟一个大数组--------------
-        int len = 10000;
+        int len = 1000000;
         int[] nums = new int[len];
         for (int i = 0; i < len; i++) {
             nums[i] = 1;
         }
         //--------------模拟一个大数组--------------
+        instance.doSum(nums);
+    }
+
+    //线程池，用于管理线程
+    private ThreadPoolExecutor threadPoolExecutor;
+    //Future类，用于接受线程返回值
+    private List<Future<Long>> futureList;
+
+    public void doSum(int[] nums) throws ExecutionException, InterruptedException {
+        //5个线程的线程池
+        threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
+        //Future类的list
+        futureList = new ArrayList<>();
+
+        int len = nums.length;
 
         //设置分片大小，每gap个数组元素的求和任务交给一个线程处理
         int gap = 1000;
@@ -82,8 +88,4 @@ public class _大数组求和 {
         }
     }
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-        _大数组求和 instance = new _大数组求和();
-        instance.doSum();
-    }
 }
