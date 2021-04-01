@@ -11,24 +11,32 @@ import java.util.concurrent.*;
  * @Description 使用线程池和Future类实现多线程对同一个数组累加问题
  */
 public class _大数组求和 {
-    //线程池
+    //线程池，用于管理线程
     private ThreadPoolExecutor threadPoolExecutor;
-    //Future类
+    //Future类，用于接受线程返回值
     private List<Future<Long>> futureList;
 
     public void doSum() throws ExecutionException, InterruptedException {
+        //5个线程的线程池
         threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
+        //Future类的list
         futureList = new ArrayList<>();
+        //--------------模拟一个大数组--------------
         int len = 10000;
         int[] nums = new int[len];
         for (int i = 0; i < len; i++) {
             nums[i] = 1;
         }
+        //--------------模拟一个大数组--------------
+
+        //设置分片大小，每gap个数组元素的求和任务交给一个线程处理
         int gap = 1000;
         int start = 0;
         int end = start + gap;
         while (end < len) {
+            //提交求和任务，交给线程池，线程池分配线程来执行任务，返回值赋给future对象
             Future<Long> future = threadPoolExecutor.submit(new SumTask(nums, start, end));
+            //每个线程执行的结果future对象，将其添加到list中
             futureList.add(future);
             start = end;
             end += gap;
@@ -40,11 +48,11 @@ public class _大数组求和 {
         threadPoolExecutor.shutdown();
         //统计结果
         long res = 0L;
+        //把list中所有future对象的值累加即可
         for (Future<Long> future : futureList) {
             res += future.get();
-            System.out.println(res);
         }
-//        System.out.println(res);
+        System.out.println("sum: " + res);
     }
 
     class SumTask implements Callable<Long> {
