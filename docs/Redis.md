@@ -179,7 +179,7 @@ A: 缓存和数据库数据一致性问题：分布式环境下非常容易出�
 
 具体的策略如下图：
 
-![img.png](Redis淘汰策略.png)
+![img.png](Redis/Redis淘汰策略.png)
 
 除此之外，Redis 4.0 加入了 LFU（least frequency use）淘汰策略，包括 volatile-lfu 和 allkeys-lfu，通过统计访问频率，将访问频率最少，即最不经常使用的 KV 淘汰。
 

@@ -559,7 +559,7 @@ InnoDB 里面每个事务有一个唯一的事务 ID，叫作 transaction id。�
 
 如图 2 所示，就是一个记录被多个事务连续更新后的状态。
 
-![img.png](行状态变更图.png)
+![img.png](MySQL/行状态变更图.png)
 
 图中虚线框里是同一行数据的 4 个版本，当前最新版本是 V4，k 的值是 22，它是被 transaction id 为 25 的事务更新的，因此它的 row trx_id 也是 25。
 
@@ -583,7 +583,7 @@ InnoDB 里面每个事务有一个唯一的事务 ID，叫作 transaction id。�
 
 这个视图数组把所有的 row trx_id 分成了几种不同的情况。
 
-![img.png](数据版本可见性规则.png)
+![img.png](MySQL/数据版本可见性规则.png)
 
 这样，对于当前事务的启动瞬间来说，一个数据版本的 row trx_id，有以下几种可能：
 
